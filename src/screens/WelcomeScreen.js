@@ -1,6 +1,8 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 export default function WelcomeScreen() {
     return (
@@ -8,19 +10,19 @@ export default function WelcomeScreen() {
             <StatusBar style="light" />
 
             {/* logo image with rings */}
-            <View className="bg-white/20 rounded-full p-10">
-                <View className="bg-white/20 rounded-full p-8">
+            <View className="bg-white/20 rounded-full" style={{ padding: hp(5.5) }}>
+                <View className="bg-white/20 rounded-full" style={{ padding: hp(5) }}>
                     <Image source={require('../../assets/images/welcome.png')}
-                        style={{ width: 200, height: 200 }} />
+                        style={{ width: hp(20), height: hp(20) }} />
                 </View>
             </View>
 
             {/* title and punchline */}
             <View className="flex items-center space-y-2">
-                <Text className="font-bold text-white tracking-widest text-6xl">
+                <Text style={{ fontStyle: hp(7) }} className="font-bold text-white tracking-widest">
                     Foody
                 </Text>
-                <Text className="font-medium text-white tracking-widest text-lg">
+                <Text style={{ fontStyle: hp(2) }} className="font-medium text-white tracking-widest">
                     Food is always right
                 </Text>
             </View>

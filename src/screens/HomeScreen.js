@@ -37,6 +37,12 @@ export default function HomeScreen() {
             >
               Make your own food,
             </Text>
+            <Text
+              style={{ fontSize: hp(3.8) }}
+              className="font-semibold text-neutral-600"
+            >
+              stay at <Text className="text-amber-400">home</Text>
+            </Text>
           </View>
         </View>
       </ScrollView>

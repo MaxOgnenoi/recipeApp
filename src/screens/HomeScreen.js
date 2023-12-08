@@ -6,6 +6,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import Categories from "../components/categories";
 
 export default function HomeScreen() {
   return (
@@ -57,6 +58,11 @@ export default function HomeScreen() {
           <View className="bg-white rounded-full p-3">
             <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
           </View>
+        </View>
+
+        {/* categories */}
+        <View>
+          <Categories />
         </View>
       </ScrollView>
     </View>

@@ -37,21 +37,23 @@ export default function HomeScreen() {
             >
               Make your own food,
             </Text>
-            <Text
-              style={{ fontSize: hp(3.8) }}
-              className="font-semibold text-neutral-600"
-            >
-              stay at <Text className="text-amber-400">home</Text>
-            </Text>
           </View>
-          <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
-            <TextInput
-              placeholder="Search any recipe"
-              placeholderTextColor={"gray"}
-              style={{ fontSize: hp(1.7) }}
-              className="flex-1 text-base mb-1 pl-3 tracking-wider"
-            />
-          </View>
+          <Text
+            style={{ fontSize: hp(3.8) }}
+            className="font-semibold text-neutral-600"
+          >
+            stay at <Text className="text-amber-400">home</Text>
+          </Text>
+        </View>
+
+        {/* search bar */}
+        <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
+          <TextInput
+            placeholder="Search any recipe"
+            placeholderTextColor={"gray"}
+            style={{ fontSize: hp(1.7) }}
+            className="flex-1 text-base mb-1 pl-3 tracking-wider"
+          />
         </View>
       </ScrollView>
     </View>

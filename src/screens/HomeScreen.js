@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TextInput } from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -43,6 +43,14 @@ export default function HomeScreen() {
             >
               stay at <Text className="text-amber-400">home</Text>
             </Text>
+          </View>
+          <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
+            <TextInput
+              placeholder="Search any recipe"
+              placeholderTextColor={"gray"}
+              style={{ fontSize: hp(1.7) }}
+              className="flex-1 text-base mb-1 pl-3 tracking-wider"
+            />
           </View>
         </View>
       </ScrollView>

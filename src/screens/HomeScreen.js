@@ -59,7 +59,7 @@ export default function HomeScreen() {
             <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
           </View>
         </View>
-
+        
         {/* categories */}
         <View>
           <Categories />

@@ -9,6 +9,7 @@ import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 
 export default function HomeScreen() {
+  const [activeCategory, setActiveCategory] = useState("Beef");
   return (
     <View className="flex-1 bg-white">
       <StatusBar style="dark" />
@@ -59,10 +60,13 @@ export default function HomeScreen() {
             <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
           </View>
         </View>
-        
+
         {/* categories */}
         <View>
-          <Categories />
+          <Categories
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
         </View>
       </ScrollView>
     </View>

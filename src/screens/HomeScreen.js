@@ -22,7 +22,7 @@ export default function HomeScreen() {
       const response = await axios.get(
         "https://themealdb.com/api/json/v1/1/categories.php"
       );
-      console.log("got categories: ", response.data);
+      //console.log("got categories: ", response.data);
       if (response && response.data) {
         setCategories(response.data.categories);
       }
@@ -83,10 +83,18 @@ export default function HomeScreen() {
 
         {/* categories */}
         <View>
-          <Categories
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
+          {categories.length > 0 && (
+            <Categories
+              categories={categories}
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+            />
+          )}
+        </View>
+
+        {/* categories */}
+        <View>
+          
         </View>
       </ScrollView>
     </View>

@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image, TextInput } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   widthPercentageToDP as wp,
@@ -11,12 +11,21 @@ import axios from "axios";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories();
+  });
 
   const getCategories = async () => {
     try {
       const response = await axios.get(
-        "www.themealdb.com/api/json/v1/1/categories.php"
+        "https://themealdb.com/api/json/v1/1/categories.php"
       );
+      console.log("got categories: ", response.data);
+      if (response && response.data) {
+        setCategories(response.data.categories);
+      }
     } catch (err) {
       console.log("error: ", err.message);
     }

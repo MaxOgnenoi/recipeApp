@@ -8,6 +8,8 @@ import {
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
 
+
+
 export default function WelcomeScreen() {
   const ring1padding = useSharedValue(0);
   const ring2padding = useSharedValue(0);

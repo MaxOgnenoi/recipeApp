@@ -7,11 +7,20 @@ import {
 } from "react-native-responsive-screen";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
-
-
+import axios from "axios";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
+
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(
+        "www.themealdb.com/api/json/v1/1/categories.php"
+      );
+    } catch (err) {
+      console.log("error: ", err.message);
+    }
+  };
   return (
     <View className="flex-1 bg-white">
       <StatusBar style="dark" />

@@ -8,6 +8,8 @@ import {
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Categories from "../components/categories";
 
+
+
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("Beef");
   return (

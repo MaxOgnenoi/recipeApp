@@ -19,7 +19,7 @@ export default function HomeScreen() {
     getCategories();
     getRecipes();
   }, []);
-  const handleChabgeCategory = (category) => {
+  const handleChangeCategory = (category) => {
     getRecipes(category);
     setActiveCategory(category);
     setMeals([]);
@@ -107,7 +107,7 @@ export default function HomeScreen() {
             <Categories
               categories={categories}
               activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
+              handleChangeCategory={handleChangeCategory}
             />
           )}
         </View>

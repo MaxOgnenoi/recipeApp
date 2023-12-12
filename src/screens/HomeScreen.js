@@ -19,7 +19,11 @@ export default function HomeScreen() {
     getCategories();
     getRecipes();
   }, []);
-
+  const handleChabgeCategory = (category) => {
+    getRecipes(category);
+    setActiveCategory(category);
+    setMeals([]);
+  };
   const getCategories = async () => {
     try {
       const response = await axios.get(

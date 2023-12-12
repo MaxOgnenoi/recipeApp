@@ -6,6 +6,7 @@ import {
 } from "react-native-responsive-screen";
 import MasonryList from "@react-native-seoul/masonry-list";
 import { mealData } from "../constants";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 export default function Recipes() {
   return (
@@ -36,7 +37,12 @@ export default function Recipes() {
 const RecipeCard = ({ item, index }) => {
   let isEven = index % 2 == 0;
   return (
-    <View>
+    <Animated.View
+      entering={FadeInDown.delay(index * 100)
+        .duration(600)
+        .springify()
+        .damping(12)}
+    >
       <Pressable
         style={{
           width: "100%",
@@ -47,10 +53,20 @@ const RecipeCard = ({ item, index }) => {
       >
         <Image
           source={{ uri: item.image }}
-          style={{ width: "100%", height: hp(35), borderRadius: 35 }}
+          style={{
+            width: "100%",
+            height: index % 3 == 0 ? hp(25) : hp(35),
+            borderRadius: 35,
+          }}
           className="bg-black/5"
         />
+        <Text
+          style={{ fontSize: hp(1.5) }}
+          className="font-semibold ml-2 text-neutral-600"
+        >
+          {item.name.length > 20 ? item.name.slice(0, 20) + "..." : item.name}
+        </Text>
       </Pressable>
-    </View>
+    </Animated.View>
   );
 };

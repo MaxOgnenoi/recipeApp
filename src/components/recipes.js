@@ -34,10 +34,15 @@ export default function Recipes() {
 }
 
 const RecipeCard = ({ item, index }) => {
+  let isEven = index % 2 == 0;
   return (
     <View>
       <Pressable
-        style={{ width: "100%" }}
+        style={{
+          width: "100%",
+          paddingLeft: isEven ? 0 : 8,
+          paddingRight: isEven ? 8 : 0,
+        }}
         className="flex justify-center mb-4 space-y-1"
       >
         <Image

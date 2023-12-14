@@ -20,7 +20,7 @@ export default function Recipes({ categories, meals }) {
       </Text>
       <View>
         {categories.length == 0 || meals.length == 0 ? (
-          <Loading />
+          <Loading size="large" className="mt-20"/>
         ) : (
           <MasonryList
             data={meals}

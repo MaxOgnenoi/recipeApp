@@ -20,7 +20,14 @@ export default function RecipeDetailScreen(props) {
       <View className="flex-row justify-center">
         <CashedImage
           uri={item.strMealThumb}
-          style={{ width: wp(98), height: hp(50), borderRadius: 53 }}
+          style={{
+            width: wp(98),
+            height: hp(50),
+            borderRadius: 53,
+            borderBottomLeftRaduius: 40,
+            borderBottomRightRaduius: 40,
+            marginTop: 4,
+          }}
         />
       </View>
     </ScrollView>

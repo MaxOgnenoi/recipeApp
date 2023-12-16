@@ -11,6 +11,8 @@ export default function RecipeDetailScreen(props) {
       contentContainerStyle={{ paddingBottom: 30 }}
     >
       <StatusBar style={"light"} />
+      {/* recipe image */}
+      <View className="flex-row justify-center"></View>
     </ScrollView>
   );
 }

@@ -6,7 +6,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { ChevronLeftIcon } from "vue-feather-icons";
+import { ChevronLeftIcon } from "vue-feather-icons/outline";
+import { HeartIcon } from "vue-feather-icons/solid";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
@@ -36,6 +37,9 @@ export default function RecipeDetailScreen(props) {
       <View className="w-full absolute flex-row justify-between items-center pt-14">
         <TouchableOpacity className="p-2 rounded-full ml-5 ng-white">
           <ChevronLeftIcon size={hp(3.5)} strokeWidth={4.5} color="#fbbf24" />
+        </TouchableOpacity>
+        <TouchableOpacity className="p-2 rounded-full mr-5 ng-white">
+          <HeartIcon size={hp(3.5)} strokeWidth={4.5} color="grey" />
         </TouchableOpacity>
       </View>
     </ScrollView>

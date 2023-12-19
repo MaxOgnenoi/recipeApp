@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { CashedImage } from "../helpers/image";
 import {
@@ -8,9 +8,13 @@ import {
 } from "react-native-responsive-screen";
 import { ChevronLeftIcon } from "vue-feather-icons/outline";
 import { HeartIcon } from "vue-feather-icons/solid";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
+  const [isFavourite, setIsFavourite] = useState(false);
+  const navigation = useNavigation();
+
   return (
     <ScrollView
       className="bg=white flex-1"
@@ -35,11 +39,21 @@ export default function RecipeDetailScreen(props) {
 
       {/* back button */}
       <View className="w-full absolute flex-row justify-between items-center pt-14">
-        <TouchableOpacity className="p-2 rounded-full ml-5 ng-white">
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          className="p-2 rounded-full ml-5 ng-white"
+        >
           <ChevronLeftIcon size={hp(3.5)} strokeWidth={4.5} color="#fbbf24" />
         </TouchableOpacity>
-        <TouchableOpacity className="p-2 rounded-full mr-5 ng-white">
-          <HeartIcon size={hp(3.5)} strokeWidth={4.5} color="grey" />
+        <TouchableOpacity
+          onPress={() => setIsFavourite(!isFavourite)}
+          className="p-2 rounded-full mr-5 ng-white"
+        >
+          <HeartIcon
+            size={hp(3.5)}
+            strokeWidth={4.5}
+            color={isFavourite ? "red" : "grey"}
+          />
         </TouchableOpacity>
       </View>
     </ScrollView>

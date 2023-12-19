@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { CashedImage } from "../helpers/image";
 import {
@@ -9,11 +9,33 @@ import {
 import { ChevronLeftIcon } from "vue-feather-icons/outline";
 import { HeartIcon } from "vue-feather-icons/solid";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
   const [isFavourite, setIsFavourite] = useState(false);
   const navigation = useNavigation();
+  const [meal, setMeal] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getMealData(item.idMeal);
+  }, []);
+
+  const getMealData = async (id) => {
+    try {
+      const response = await axios.get(
+        `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+      );
+      //console.log("got recipes: ", response.data);
+      if (response && response.data) {
+        setMeal(response.data.meals[0]);
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log("error: ", err.message);
+    }
+  };
 
   return (
     <ScrollView
@@ -56,6 +78,8 @@ export default function RecipeDetailScreen(props) {
           />
         </TouchableOpacity>
       </View>
+
+      {/* meal description */}
     </ScrollView>
   );
 }

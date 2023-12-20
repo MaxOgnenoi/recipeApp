@@ -6,8 +6,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { ChevronLeftIcon } from "vue-feather-icons/outline";
-import { HeartIcon } from "vue-feather-icons/solid";
+import { ChevronLeftIcon } from "vue-feather-icons";
+import { HeartIcon } from "vue-feather-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 

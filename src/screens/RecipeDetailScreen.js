@@ -85,7 +85,15 @@ export default function RecipeDetailScreen(props) {
         <Loading size="large" className="mt-16" />
       ) : (
         <View className="px-4 flex justify-between space-y-4 pt-8">
-          <Text></Text>
+          {/* name and area */}
+          <View className="space-y-2">
+            <Text
+              style={{ fontSize: hp(3) }}
+              className="font-bold flex-1 text-neutral-700"
+            >
+              {meal?.strMeal}
+            </Text>
+          </View>
         </View>
       )}
     </ScrollView>

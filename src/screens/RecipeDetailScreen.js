@@ -10,6 +10,7 @@ import { ChevronLeftIcon } from "vue-feather-icons";
 import { HeartIcon } from "vue-feather-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import Loading from "../components/loading";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
@@ -80,6 +81,13 @@ export default function RecipeDetailScreen(props) {
       </View>
 
       {/* meal description */}
+      {loading ? (
+        <Loading size="large" className="mt-16" />
+      ) : (
+        <View className="px-4 flex justify-between space-y-4 pt-8">
+          <Text></Text>
+        </View>
+      )}
     </ScrollView>
   );
 }

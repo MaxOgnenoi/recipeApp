@@ -93,6 +93,12 @@ export default function RecipeDetailScreen(props) {
             >
               {meal?.strMeal}
             </Text>
+            <Text
+              style={{ fontSize: hp(2) }}
+              className="font-medium flex-1 text-neutral-500"
+            >
+              {meal?.strArea}
+            </Text>
           </View>
         </View>
       )}

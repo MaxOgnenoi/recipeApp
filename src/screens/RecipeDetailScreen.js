@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { ChevronLeftIcon } from "vue-feather-icons";
+import { ChevronLeftIcon, ClockIcon } from "vue-feather-icons";
 import { HeartIcon } from "vue-feather-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -100,9 +100,22 @@ export default function RecipeDetailScreen(props) {
               {meal?.strArea}
             </Text>
           </View>
-          
-          {/* misc */}
 
+          {/* misc */}
+          <View className="flex-row justify-around">
+            <View className="flex rounded-full bg-amber-300 p-2">
+              <View
+                style={{ height: hp(6.5), width: hp(6.5) }}
+                classNamebg-white
+                rounded-full
+                flex
+                items-center
+                justify-center
+              >
+                <ClockIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
+              </View>
+            </View>
+          </View>
         </View>
       )}
     </ScrollView>

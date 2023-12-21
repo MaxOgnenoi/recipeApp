@@ -100,6 +100,9 @@ export default function RecipeDetailScreen(props) {
               {meal?.strArea}
             </Text>
           </View>
+          
+          {/* misc */}
+
         </View>
       )}
     </ScrollView>

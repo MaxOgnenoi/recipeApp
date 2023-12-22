@@ -211,6 +211,16 @@ export default function RecipeDetailScreen(props) {
               </View>
             </View>
           </View>
+
+          {/* ingridients */}
+          <View className="space-y-4">
+            <Text
+              style={{ fontSize: hp(2.5) }}
+              className="font-bold flex-1 text-neutral-700"
+            >
+              Ingridients
+            </Text>
+          </View>
         </View>
       )}
     </ScrollView>

@@ -6,11 +6,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { ChevronLeftIcon, ClockIcon } from "vue-feather-icons";
+import { ChevronLeftIcon, ClockIcon, UsersIcon } from "vue-feather-icons";
 import { HeartIcon } from "vue-feather-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import Loading from "../components/loading";
+import { FireIcon, Square3Stack3DIcon } from "react-native-heroicons/outline";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
@@ -118,11 +119,95 @@ export default function RecipeDetailScreen(props) {
                 <Text
                   style={{ fontSize: hp(2) }}
                   className="font-bold text-neutral-700"
+                >
+                  35
+                </Text>
+                <Text
+                  style={{ fontSize: hp(1.3) }}
+                  className="font-bold text-neutral-700"
+                >
+                  Mins
+                </Text>
+              </View>
+            </View>
+            <View className="flex rounded-full bg-amber-300 p-2">
+              <View
+                style={{ height: hp(6.5), width: hp(6.5) }}
+                classNamebg-white
+                rounded-full
+                flex
+                items-center
+                justify-center
+              >
+                <UsersIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
+              </View>
+              <View className="flex item-center py-2 space-y-1">
+                <Text
+                  style={{ fontSize: hp(2) }}
+                  className="font-bold text-neutral-700"
+                >
+                  03
+                </Text>
+                <Text
+                  style={{ fontSize: hp(1.3) }}
+                  className="font-bold text-neutral-700"
+                >
+                  Servings
+                </Text>
+              </View>
+            </View>
+            <View className="flex rounded-full bg-amber-300 p-2">
+              <View
+                style={{ height: hp(6.5), width: hp(6.5) }}
+                classNamebg-white
+                rounded-full
+                flex
+                items-center
+                justify-center
+              >
+                <FireIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
+              </View>
+              <View className="flex item-center py-2 space-y-1">
+                <Text
+                  style={{ fontSize: hp(2) }}
+                  className="font-bold text-neutral-700"
+                >
+                  103
+                </Text>
+                <Text
+                  style={{ fontSize: hp(1.3) }}
+                  className="font-bold text-neutral-700"
+                >
+                  Cal
+                </Text>
+              </View>
+            </View>
+            <View className="flex rounded-full bg-amber-300 p-2">
+              <View
+                style={{ height: hp(6.5), width: hp(6.5) }}
+                classNamebg-white
+                rounded-full
+                flex
+                items-center
+                justify-center
+              >
+                <Square3Stack3DIcon
+                  size={hp(4)}
+                  strokeWidth={2.5}
+                  color="#525252"
+                />
+              </View>
+              <View className="flex item-center py-2 space-y-1">
+                <Text
+                  style={{ fontSize: hp(2) }}
+                  className="font-bold text-neutral-700"
                 ></Text>
                 <Text
                   style={{ fontSize: hp(1.3) }}
                   className="font-bold text-neutral-700"
-                ></Text>
+                >
+                  Easy
+                </Text>
               </View>
             </View>
           </View>

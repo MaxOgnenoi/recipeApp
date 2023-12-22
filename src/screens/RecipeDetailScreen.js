@@ -114,7 +114,7 @@ export default function RecipeDetailScreen(props) {
               >
                 <ClockIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
               </View>
-              <View></View>
+              <View className="flex item-center py-2 space-y-1"></View>
             </View>
           </View>
         </View>

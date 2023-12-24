@@ -238,10 +238,16 @@ export default function RecipeDetailScreen(props) {
                       className="bg-amber-300 rounded-full"
                     />
                     <View className="flex-row space-x-2">
-                      <Text className="font-extrabold text-neutral-700">
+                      <Text
+                        style={{ fontSize: hp(1.7) }}
+                        className="font-extrabold text-neutral-700"
+                      >
                         {meal["strMeasure" + i]}
                       </Text>
-                      <Text className="font-medium text-neutral-500">
+                      <Text
+                        style={{ fontSize: hp(1.7) }}
+                        className="font-medium text-neutral-500"
+                      >
                         {meal["strIngredient" + i]}
                       </Text>
                     </View>

@@ -246,7 +246,43 @@ export default function RecipeDetailScreen(props) {
                       </Text>
                       <Text
                         style={{ fontSize: hp(1.7) }}
-                        className="font-medium text-neutral-500"
+                        className="font-medium text-neutral-600"
+                      >
+                        {meal["strIngredient" + i]}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+
+          {/* instructions */}
+          <View className="space-y-4">
+            <Text
+              style={{ fontSize: hp(2.5) }}
+              className="font-bold flex-1 text-neutral-700"
+            >
+              Instructions
+            </Text>
+            <View className="space-y-2 ml-3">
+              {ingredientsIndexes(meal).map((i) => {
+                return (
+                  <View key={i} className="flex-row space-x-4">
+                    <View
+                      style={{ height: hp(1.5), width: hp(1.5) }}
+                      className="bg-amber-300 rounded-full"
+                    />
+                    <View className="flex-row space-x-2">
+                      <Text
+                        style={{ fontSize: hp(1.7) }}
+                        className="font-extrabold text-neutral-700"
+                      >
+                        {meal["strMeasure" + i]}
+                      </Text>
+                      <Text
+                        style={{ fontSize: hp(1.7) }}
+                        className="font-medium text-neutral-600"
                       >
                         {meal["strIngredient" + i]}
                       </Text>

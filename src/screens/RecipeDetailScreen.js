@@ -271,6 +271,18 @@ export default function RecipeDetailScreen(props) {
             ></Text>
             {meal?.strInstructions}
           </View>
+
+          {/* recipe video */}
+          {meal.strYoutube && (
+            <View className="space-y-4">
+              <Text
+                style={{ fontSize: hp(2.5) }}
+                className="font-bold flex-1 text-neutral-700"
+              >
+                Recipe Video
+              </Text>
+            </View>
+          )}
         </View>
       )}
     </ScrollView>

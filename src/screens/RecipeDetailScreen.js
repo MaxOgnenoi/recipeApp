@@ -269,6 +269,7 @@ export default function RecipeDetailScreen(props) {
               style={{ fontSize: hp(1.6) }}
               className="text-neutral-700"
             ></Text>
+            {meal?.strInstructions}
           </View>
         </View>
       )}

@@ -13,6 +13,7 @@ import axios from "axios";
 import Loading from "../components/loading";
 import { FireIcon, Square3Stack3DIcon } from "react-native-heroicons/outline";
 import YoutubeIframe from "react-native-youtube-iframe";
+import Animated, { FadeInDown, FadeIn } from "react-native-reanimated";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
@@ -82,7 +83,10 @@ export default function RecipeDetailScreen(props) {
       </View>
 
       {/* back button */}
-      <View className="w-full absolute flex-row justify-between items-center pt-14">
+      <Animated.View
+        entering={FadeIn.delay(200).duration(1000)}
+        className="w-full absolute flex-row justify-between items-center pt-14"
+      >
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           className="p-2 rounded-full ml-5 ng-white"
@@ -99,7 +103,7 @@ export default function RecipeDetailScreen(props) {
             color={isFavourite ? "red" : "grey"}
           />
         </TouchableOpacity>
-      </View>
+      </Animated.View>
 
       {/* meal description */}
       {loading ? (

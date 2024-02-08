@@ -69,6 +69,7 @@ export default function RecipeDetailScreen(props) {
       <View className="flex-row justify-center">
         <CashedImage
           uri={item.strMealThumb}
+          sharedTransitionTag={item.strMeal}
           style={{
             width: wp(98),
             height: hp(50),

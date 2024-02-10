@@ -131,7 +131,10 @@ export default function RecipeDetailScreen(props) {
 
           {/* misc */}
           <Animated.View
-            entering={FadeInDown.duration(700).springify().damping(12)}
+            entering={FadeInDown.delay(100)
+              .duration(700)
+              .springify()
+              .damping(12)}
             className="flex-row justify-around"
           >
             <View className="flex rounded-full bg-amber-300 p-2">

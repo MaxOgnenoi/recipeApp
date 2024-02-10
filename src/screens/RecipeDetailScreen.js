@@ -130,7 +130,10 @@ export default function RecipeDetailScreen(props) {
           </Animated.View>
 
           {/* misc */}
-          <View className="flex-row justify-around">
+          <Animated.View
+            entering={FadeInDown.duration(700).springify().damping(12)}
+            className="flex-row justify-around"
+          >
             <View className="flex rounded-full bg-amber-300 p-2">
               <View
                 style={{ height: hp(6.5), width: hp(6.5) }}
@@ -237,7 +240,7 @@ export default function RecipeDetailScreen(props) {
                 </Text>
               </View>
             </View>
-          </View>
+          </Animated.View>
 
           {/* ingridients */}
           <View className="space-y-4">

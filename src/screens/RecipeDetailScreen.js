@@ -111,7 +111,10 @@ export default function RecipeDetailScreen(props) {
       ) : (
         <View className="px-4 flex justify-between space-y-4 pt-8">
           {/* name and area */}
-          <Animated.View className="space-y-2">
+          <Animated.View
+            entering={FadeInDown.duration(700).springify().damping(12)}
+            className="space-y-2"
+          >
             <Text
               style={{ fontSize: hp(3) }}
               className="font-bold flex-1 text-neutral-700"

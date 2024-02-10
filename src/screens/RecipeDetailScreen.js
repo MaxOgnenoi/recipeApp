@@ -246,7 +246,13 @@ export default function RecipeDetailScreen(props) {
           </Animated.View>
 
           {/* ingridients */}
-          <View className="space-y-4">
+          <Animated.View
+            entering={FadeInDown.delay(100)
+              .duration(700)
+              .springify()
+              .damping(12)}
+            className="space-y-4"
+          >
             <Text
               style={{ fontSize: hp(2.5) }}
               className="font-bold flex-1 text-neutral-700"
@@ -279,7 +285,7 @@ export default function RecipeDetailScreen(props) {
                 );
               })}
             </View>
-          </View>
+          </Animated.View>
 
           {/* instructions */}
           <View className="space-y-4">

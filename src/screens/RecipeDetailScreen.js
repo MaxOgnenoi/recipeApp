@@ -311,7 +311,7 @@ export default function RecipeDetailScreen(props) {
           {/* recipe video */}
           {meal.strYoutube && (
             <Animated.View
-              entering={FadeInDown.delay(100)
+              entering={FadeInDown.delay(400)
                 .duration(700)
                 .springify()
                 .damping(12)}

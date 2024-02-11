@@ -310,7 +310,13 @@ export default function RecipeDetailScreen(props) {
 
           {/* recipe video */}
           {meal.strYoutube && (
-            <View className="space-y-4">
+            <Animated.View
+              entering={FadeInDown.delay(100)
+                .duration(700)
+                .springify()
+                .damping(12)}
+              className="space-y-4"
+            >
               <Text
                 style={{ fontSize: hp(2.5) }}
                 className="font-bold flex-1 text-neutral-700"
@@ -323,7 +329,7 @@ export default function RecipeDetailScreen(props) {
                   height={hp(30)}
                 />
               </View>
-            </View>
+            </Animated.View>
           )}
         </View>
       )}

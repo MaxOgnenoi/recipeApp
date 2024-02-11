@@ -289,7 +289,7 @@ export default function RecipeDetailScreen(props) {
 
           {/* instructions */}
           <Animated.View
-            entering={FadeInDown.delay(100)
+            entering={FadeInDown.delay(300)
               .duration(700)
               .springify()
               .damping(12)}

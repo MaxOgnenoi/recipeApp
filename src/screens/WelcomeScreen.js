@@ -8,8 +8,6 @@ import {
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
 
-
-
 export default function WelcomeScreen() {
   const ring1padding = useSharedValue(0);
   const ring2padding = useSharedValue(0);
@@ -32,17 +30,30 @@ export default function WelcomeScreen() {
   }, []);
 
   return (
-    <View className="flex-1 justify-center items-center space-y-10 bg-amber-500">
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f59e0b",
+      }}
+    >
       <StatusBar style="light" />
 
       {/* logo image with rings */}
       <Animated.View
-        className="bg-white/20 rounded-full"
-        style={{ padding: ring2padding }}
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderRadius: 999,
+          padding: ring2padding,
+        }}
       >
         <Animated.View
-          className="bg-white/20 rounded-full"
-          style={{ padding: ring1padding }}
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            borderRadius: 999,
+            padding: ring1padding,
+          }}
         >
           <Image
             source={require("../../assets/images/welcome.png")}
@@ -52,16 +63,24 @@ export default function WelcomeScreen() {
       </Animated.View>
 
       {/* title and punchline */}
-      <View className="flex items-center space-y-2">
+      <View style={{ alignItems: "center", marginTop: hp(4) }}>
         <Text
-          style={{ fontStyle: hp(7) }}
-          className="font-bold text-white tracking-widest"
+          style={{
+            fontSize: hp(7),
+            fontWeight: "bold",
+            color: "#fff",
+            letterSpacing: 2,
+          }}
         >
           Foody
         </Text>
         <Text
-          style={{ fontStyle: hp(2) }}
-          className="font-medium text-white tracking-widest"
+          style={{
+            fontSize: hp(2),
+            fontWeight: "medium",
+            color: "#fff",
+            letterSpacing: 2,
+          }}
         >
           Food is always right
         </Text>

@@ -13,42 +13,43 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function Recipes({ categories, meals }) {
   const navigation = useNavigation();
+
   return (
     <View style={{ marginHorizontal: 4, marginTop: 10, marginBottom: 20 }}>
       <Text style={{ fontSize: hp(3), fontWeight: "bold", color: "#333" }}>
         Recipes
       </Text>
       <View>
-        {!categories ||
-        !meals ||
-        categories.length == 0 ||
-        meals.length == 0 ? (
-          <Loading size="large" style={{ marginTop: 20 }} />
+        {(categories && meals) ? (
+          (categories.length > 0 && meals.length > 0) ? (
+            <MasonryList
+              data={meals}
+              keyExtractor={(item) => item.idMeal}
+              numColumns={2}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item, index }) => (
+                <RecipeCard item={item} index={index} navigation={navigation} />
+              )}
+              onEndReachedThreshold={0.1}
+            />
+          ) : (
+            <Text>No recipes found.</Text>
+          )
         ) : (
-          <MasonryList
-            data={meals}
-            keyExtractor={(item) => item.idMeal}
-            numColumns={2}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item, index }) => (
-              <RecipeCard item={item} index={index} navigation={navigation} />
-            )}
-            onEndReachedThreshold={0.1}
-          />
+          <Loading size="large" style={{ marginTop: 20 }} />
         )}
       </View>
     </View>
   );
 }
 
+
+
 const RecipeCard = ({ item, index, navigation }) => {
   let isEven = index % 2 == 0;
   return (
     <Animated.View
-      style={FadeInDown.delay(index * 100)
-        .duration(600)
-        .springify()
-        .damping(12)}
+      style={FadeInDown.delay(index * 100).duration(600).springify().damping(12)}
     >
       <Pressable
         style={{
@@ -67,17 +68,8 @@ const RecipeCard = ({ item, index, navigation }) => {
             backgroundColor: "rgba(0,0,0,0.1)",
           }}
         />
-        <Text
-          style={{
-            fontSize: hp(1.5),
-            fontWeight: "bold",
-            color: "#333",
-            marginLeft: 2,
-          }}
-        >
-          {item.strMeal && item.strMeal.length > 20
-            ? item.strMeal.slice(0, 20) + "..."
-            : item.strMeal}
+        <Text style={{ fontSize: hp(1.5), fontWeight: "bold", color: "#333", marginLeft: 2 }}>
+          {item.strMeal && item.strMeal.length > 20 ? item.strMeal.slice(0, 20) + "..." : item.strMeal}
         </Text>
       </Pressable>
     </Animated.View>

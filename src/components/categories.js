@@ -1,75 +1,31 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
-import Animated, {
-  useSharedValue,
-  withSpring,
-  useAnimatedStyle,
-} from "react-native-reanimated";
+import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
-export default function Categories({
-  categories,
-  activeCategory,
-  handleChangeCategory,
-}) {
-  const fadeInDown = useSharedValue(0);
-
-  fadeInDown.value = withSpring(1);
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: fadeInDown.value,
-      transform: [
-        {
-          translateY: fadeInDown.value * 20,
-        },
-      ],
-    };
-  });
-
+export default function Categories({ categories, activeCategory, handleChangeCategory }) {
   return (
-    <Animated.View style={animatedStyle}>
+    <Animated.View style={FadeInDown.duration(500).springify()}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 15 }}
+        style={{ paddingHorizontal: 15 }}
       >
         {categories.map((cat, index) => {
-          let isActive = cat.strCategory == activeCategory;
-          let activeButtonStyle = isActive
-            ? { backgroundColor: "#f59e0b" }
-            : { backgroundColor: "rgba(0, 0, 0, 0.1)" };
+          let isActive = cat.strCategory === activeCategory;
+          let activeButtonClass = isActive ? "bg-amber-400" : "bg-black/10";
           return (
             <TouchableOpacity
               key={index}
               onPress={() => handleChangeCategory(cat.strCategory)}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginRight: 10,
-                padding: 8,
-                borderRadius: 20,
-                ...activeButtonStyle,
-              }}
+              style={{ alignItems: "center", marginRight: 4 }}
             >
-              {/* Assuming CashedImage is an external component */}
-              {/* <CashedImage
-                uri={cat.strCategoryThumb}
-                style={{ width: hp(6), height: hp(6), borderRadius: hp(3) }}
-              /> */}
-              <View
-                style={{
-                  width: hp(6),
-                  height: hp(6),
-                  borderRadius: hp(3),
-                  backgroundColor: "gray", // Placeholder for image
-                  marginRight: 8,
-                }}
-              />
-              <Text style={{ fontSize: hp(1.6), color: "#333" }}>
+              <View style={[{ borderRadius: 999, padding: 6 }, activeButtonClass]}>
+                <Image
+                  source={{ uri: cat.strCategoryThumb }}
+                  style={{ width: 48, height: 48, borderRadius: 24 }}
+                />
+              </View>
+              <Text style={{ fontSize: 12, color: "#333" }}>
                 {cat.strCategory}
               </Text>
             </TouchableOpacity>

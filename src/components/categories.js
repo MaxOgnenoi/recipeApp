@@ -4,7 +4,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Animated from "react-native-reanimated";
+import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import { CachedImage } from "../helpers/image";
 
 export default function Categories({
   categories,
@@ -33,7 +34,7 @@ export default function Categories({
                   borderRadius: hp(3),
                 }}
               >
-                <CashedImage
+                <CachedImage
                   uri={cat.strCategoryThumb}
                   style={{ width: hp(6), height: hp(6), borderRadius: hp(3) }}
                 />

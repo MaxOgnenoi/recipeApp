@@ -8,7 +8,7 @@ import MasonryList from "@react-native-seoul/masonry-list";
 import { mealData } from "../constants";
 import Animated, {FadeInDown} from "react-native-reanimated";
 import Loading from "./loading";
-import { CashedImage } from "../helpers/image";
+import { CachedImage } from "../helpers/image";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Recipes({ categories, meals }) {
@@ -55,7 +55,7 @@ const RecipeCard = ({ item, index, navigation }) => {
         style={{ alignItems: "center", marginBottom: hp(2) }}
         onPress={() => navigation.navigate("RecipeDetail", { ...item })}
       >
-        <CashedImage
+        <CachedImage
           uri={item.strMealThumb}
           style={{
             width: "100%",

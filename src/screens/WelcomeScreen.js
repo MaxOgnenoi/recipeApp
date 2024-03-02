@@ -43,14 +43,14 @@ export default function WelcomeScreen() {
       {/* logo image with rings */}
       <Animated.View
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          backgroundColor: "rgba(255,255,255,0.2)",
           borderRadius: 999,
           padding: ring2padding,
         }}
       >
         <Animated.View
           style={{
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            backgroundColor: "rgba(255,255,255,0.2)",
             borderRadius: 999,
             padding: ring1padding,
           }}
@@ -63,13 +63,15 @@ export default function WelcomeScreen() {
       </Animated.View>
 
       {/* title and punchline */}
-      <View style={{ alignItems: "center", marginTop: hp(4) }}>
+      <View
+        style={{ alignItems: "center", marginTop: hp(5), marginBottom: hp(10) }}
+      >
         <Text
           style={{
             fontSize: hp(7),
             fontWeight: "bold",
             color: "#fff",
-            letterSpacing: 2,
+            letterSpacing: 1,
           }}
         >
           Foody
@@ -77,9 +79,9 @@ export default function WelcomeScreen() {
         <Text
           style={{
             fontSize: hp(2),
-            fontWeight: "medium",
+            fontWeight: "500",
             color: "#fff",
-            letterSpacing: 2,
+            letterSpacing: 1,
           }}
         >
           Food is always right

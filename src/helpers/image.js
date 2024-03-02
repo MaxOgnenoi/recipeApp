@@ -2,16 +2,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import Animated from "react-native-reanimated";
 
-export const CashedImage = (props) => {
-  const [cashedSource, setCashedSource] = useState(null);
+export const CachedImage = (props) => {
+  const [cachedSource, setCachedSource] = useState(null);
   const { uri } = props;
 
   useEffect(() => {
-    const getCashedImage = async () => {
+    const getCachedImage = async () => {
       try {
-        const cashedImageData = await AsyncStorage.getItem(uri);
-        if (cashedImageData) {
-          setCashedSource({ uri: cashedImageData });
+        const cachedImageData = await AsyncStorage.getItem(uri);
+        if (cachedImageData) {
+          setCachedSource({ uri: cachedImageData });
         } else {
           const response = await fetch(uri);
           const imageBlob = await response.blob();
@@ -23,14 +23,14 @@ export const CashedImage = (props) => {
             };
           });
           await AsyncStorage.setItem(uri, base64Data);
-          setCashedSource({ uri: base64Data });
+          setCachedSource({ uri: base64Data });
         }
       } catch (error) {
         console.error("Error caching image", error);
-        setCashedSource({ uri });
+        setCachedSource({ uri });
       }
     };
-    getCashedImage();
+    getCachedImage();
   }, []);
-  return <Animated.Image source={cashedSource} {...props} />;
+  return <Animated.Image source={cachedSource} {...props} />;
 };

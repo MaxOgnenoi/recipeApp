@@ -1,17 +1,23 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import { CashedImage } from "../helpers/image";
+import { CachedImage } from "../helpers/image";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { ChevronLeftIcon, HeartIcon, ClockIcon } from "react-native-heroicons/outline";
+import {
+  ChevronLeftIcon,
+  HeartIcon,
+  ClockIcon,
+  UsersIcon,
+} from "react-native-heroicons/outline";
+
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import Loading from "../components/loading";
 import YoutubeIframe from "react-native-youtube-iframe";
-import Animated, { FadeInDown, FadeIn } from "react-native-reanimated";
+import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 
 export default function RecipeDetailScreen(props) {
   let item = props.route.params;
@@ -42,7 +48,9 @@ export default function RecipeDetailScreen(props) {
     if (!meal) return [];
     let indexes = [];
     for (let i = 1; i <= 20; i++) {
-      indexes.push(i);
+      if (meal["strIngredient" + i]) {
+        indexes.push(i);
+      }
     }
     return indexes;
   };
@@ -64,7 +72,7 @@ export default function RecipeDetailScreen(props) {
       <StatusBar style={"light"} />
       {/* recipe image */}
       <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <CashedImage
+        <CachedImage
           uri={item.strMealThumb}
           sharedTransitionTag={item.strMeal}
           style={{
@@ -80,17 +88,34 @@ export default function RecipeDetailScreen(props) {
 
       {/* back button */}
       <Animated.View
-        style={{ position: "absolute", flexDirection: "row", justifyContent: "space-between", width: "100%", paddingTop: 140 }}
+        entering={FadeIn.delay(200).duration(1000)}
+        style={{
+          position: "absolute",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          width: "100%",
+          paddingTop: 140,
+        }}
       >
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={{ padding: 10, borderRadius: 999, marginLeft: 10, backgroundColor: "white" }}
+          style={{
+            padding: 10,
+            borderRadius: 999,
+            marginLeft: 10,
+            backgroundColor: "white",
+          }}
         >
           <ChevronLeftIcon size={hp(3.5)} strokeWidth={4.5} color="#fbbf24" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setIsFavourite(!isFavourite)}
-          style={{ padding: 10, borderRadius: 999, marginRight: 10, backgroundColor: "white" }}
+          style={{
+            padding: 10,
+            borderRadius: 999,
+            marginRight: 10,
+            backgroundColor: "white",
+          }}
         >
           <HeartIcon
             size={hp(3.5)}
@@ -106,52 +131,86 @@ export default function RecipeDetailScreen(props) {
       ) : (
         <View style={{ paddingHorizontal: 8, paddingBottom: 30 }}>
           {/* name and area */}
-          <Animated.View
-            style={{ marginTop: 16 }}
-          >
+          <Animated.View style={{ marginTop: 16 }}>
             <Text
               style={{ fontSize: hp(3), fontWeight: "bold", color: "#333" }}
             >
               {meal?.strMeal}
             </Text>
-            <Text
-              style={{ fontSize: hp(2), color: "#555" }}
-            >
+            <Text style={{ fontSize: hp(2), color: "#555" }}>
               {meal?.strArea}
             </Text>
           </Animated.View>
 
           {/* misc */}
           <Animated.View
-            style={{ flexDirection: "row", justifyContent: "space-around", marginTop: 20 }}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-around",
+              marginTop: 20,
+            }}
           >
             <View style={{ alignItems: "center" }}>
               <ClockIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ fontSize: hp(2), fontWeight: "bold", color: "#333" }}>35</Text>
-                <Text style={{ fontSize: hp(1.3), fontWeight: "bold", color: "#333" }}>Mins</Text>
+                <Text
+                  style={{ fontSize: hp(2), fontWeight: "bold", color: "#333" }}
+                >
+                  35
+                </Text>
+                <Text
+                  style={{
+                    fontSize: hp(1.3),
+                    fontWeight: "bold",
+                    color: "#333",
+                  }}
+                >
+                  Mins
+                </Text>
               </View>
             </View>
             <View style={{ alignItems: "center" }}>
               <UsersIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ fontSize: hp(2), fontWeight: "bold", color: "#333" }}>03</Text>
-                <Text style={{ fontSize: hp(1.3), fontWeight: "bold", color: "#333" }}>Servings</Text>
+                <Text
+                  style={{ fontSize: hp(2), fontWeight: "bold", color: "#333" }}
+                >
+                  03
+                </Text>
+                <Text
+                  style={{
+                    fontSize: hp(1.3),
+                    fontWeight: "bold",
+                    color: "#333",
+                  }}
+                >
+                  Servings
+                </Text>
               </View>
             </View>
             <View style={{ alignItems: "center" }}>
               <FireIcon size={hp(4)} strokeWidth={2.5} color="#525252" />
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ fontSize: hp(2), fontWeight: "bold", color: "#333" }}>103</Text>
-                <Text style={{ fontSize: hp(1.3), fontWeight: "bold", color: "#333" }}>Cal</Text>
+                <Text
+                  style={{ fontSize: hp(2), fontWeight: "bold", color: "#333" }}
+                >
+                  103
+                </Text>
+                <Text
+                  style={{
+                    fontSize: hp(1.3),
+                    fontWeight: "bold",
+                    color: "#333",
+                  }}
+                >
+                  Cal
+                </Text>
               </View>
             </View>
           </Animated.View>
 
           {/* ingredients */}
-          <Animated.View
-            style={{ marginTop: 20 }}
-          >
+          <Animated.View style={{ marginTop: 20 }}>
             <Text
               style={{ fontSize: hp(2.5), fontWeight: "bold", color: "#333" }}
             >
@@ -160,12 +219,35 @@ export default function RecipeDetailScreen(props) {
             <View style={{ marginLeft: 16 }}>
               {ingredientsIndexes(meal).map((i) => {
                 return (
-                  <View key={i} style={{ flexDirection: "row", alignItems: "center" }}>
-                    <View style={{ width: 8, height: 8, backgroundColor: "#f59e0b", borderRadius: 4, marginRight: 8 }} />
-                    <Text style={{ fontSize: hp(1.7), fontWeight: "bold", color: "#333" }}>
+                  <View
+                    key={i}
+                    style={{ flexDirection: "row", alignItems: "center" }}
+                  >
+                    <View
+                      style={{
+                        width: 8,
+                        height: 8,
+                        backgroundColor: "#f59e0b",
+                        borderRadius: 4,
+                        marginRight: 8,
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontSize: hp(1.7),
+                        fontWeight: "bold",
+                        color: "#333",
+                      }}
+                    >
                       {meal["strMeasure" + i]}
                     </Text>
-                    <Text style={{ fontSize: hp(1.7), color: "#555", marginLeft: 8 }}>
+                    <Text
+                      style={{
+                        fontSize: hp(1.7),
+                        color: "#555",
+                        marginLeft: 8,
+                      }}
+                    >
                       {meal["strIngredient" + i]}
                     </Text>
                   </View>
@@ -175,26 +257,20 @@ export default function RecipeDetailScreen(props) {
           </Animated.View>
 
           {/* instructions */}
-          <Animated.View
-            style={{ marginTop: 20 }}
-          >
+          <Animated.View style={{ marginTop: 20 }}>
             <Text
               style={{ fontSize: hp(2.5), fontWeight: "bold", color: "#333" }}
             >
               Instructions
             </Text>
-            <Text
-              style={{ fontSize: hp(1.6), color: "#555", marginTop: 8 }}
-            >
+            <Text style={{ fontSize: hp(1.6), color: "#555", marginTop: 8 }}>
               {meal?.strInstructions}
             </Text>
           </Animated.View>
 
           {/* recipe video */}
           {meal.strYoutube && (
-            <Animated.View
-              style={{ marginTop: 20 }}
-            >
+            <Animated.View style={{ marginTop: 20 }}>
               <Text
                 style={{ fontSize: hp(2.5), fontWeight: "bold", color: "#333" }}
               >

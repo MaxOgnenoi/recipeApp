@@ -11,6 +11,7 @@ import {
   HeartIcon,
   ClockIcon,
   UsersIcon,
+  FireIcon,
 } from "react-native-heroicons/outline";
 
 import { useNavigation } from "@react-navigation/native";

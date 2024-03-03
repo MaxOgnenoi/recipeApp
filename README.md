@@ -14,13 +14,13 @@ Foody is a mobile app that helps you discover and organize your favorite recipes
 
 ## Screenshots
 
-![Home Screen](assets/images/1.jpeg)
+![Home Screen]<img src="assets/images/1.jpeg" alt="Home Screen" width="200" />
 
-![Recipe Detail Screen](assets/images/2.jpeg)
+![Recipe Detail Screen]<img src="assets/images/2.jpeg" alt="Recipe Detail Screen" width="200" />
 
-![Welcome Screen](assets/images/3.jpeg)
+![Welcome Screen]<img src="assets/images/3.jpeg" alt="Welcome Screen" width="200" />
 
-![Recipe Detail Screen 2](assets/images/4.jpeg)
+![Recipe Detail Screen 2]<img src="assets/images/4.jpeg" alt="Recipe Detail Screen 2" width="200" />
 
 ## Technologies Used
 

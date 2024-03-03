@@ -95,7 +95,7 @@ export default function RecipeDetailScreen(props) {
           flexDirection: "row",
           justifyContent: "space-between",
           width: "100%",
-          paddingTop: 140,
+          paddingTop: 55,
         }}
       >
         <TouchableOpacity
